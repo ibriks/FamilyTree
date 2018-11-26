@@ -3,147 +3,133 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class FamilyEditorTest {
-	
+
 	@Test
 	public void firstEntryInSet() {
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
-		Person Adam = null;
-		Person Ivan = null;
-		for (Person person : family.returnFamily()) {
+		Person adam = null;
+		Person ivan = null;
+		for (Person person : family.getFamily()) {
 			if (person.getName().equals("Adam")) {
-				Adam = person;
+				adam = person;
 			}
 			if (person.getName().equals("Ivan")) {
-				Ivan = person;
+				ivan = person;
 			}
 		}
-		assertEquals(true, family.returnFamily().contains(Adam));
-		assertEquals(true, family.returnFamily().contains(Ivan));
-		assertEquals(true, Ivan.getChildren().contains(Adam));
+		assertEquals(true, family.getFamily().contains(adam));
+		assertEquals(true, family.getFamily().contains(ivan));
+		assertEquals(true, ivan.getChildren().contains(adam));
 	}
-	
+
 	@Test
 	public void findingPersonInSetByName() {
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
-		Person Adam = family.personFinder("Adam");
-		Person Ivan = family.personFinder("Ivan");
-		assertEquals(true, family.returnFamily().contains(Adam));
-		assertEquals(true, family.returnFamily().contains(Ivan));
+		Person adam = family.personFinder("Adam");
+		Person ivan = family.personFinder("Ivan");
+		assertEquals(true, family.getFamily().contains(adam));
+		assertEquals(true, family.getFamily().contains(ivan));
 	}
-	
+
 	@Test
 	public void newEntryNewChildAndNewParent() {
-		// Building family  
+		// Building family
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
-		
-		//Test
+
+		// Test
 		family.addRelation("Marko", "Stjepan");
-		Person Marko = family.personFinder("Marko");
-		Person Stjepan = family.personFinder("Stjepan");
-		assertEquals(true, family.returnFamily().contains(Marko));
-		assertEquals(true, family.returnFamily().contains(Stjepan));
-		assertEquals(true, Stjepan.getChildren().contains(Marko));
+		Person marko = family.personFinder("Marko");
+		Person stjepan = family.personFinder("Stjepan");
+		assertEquals(true, family.getFamily().contains(marko));
+		assertEquals(true, family.getFamily().contains(stjepan));
+		assertEquals(true, stjepan.getChildren().contains(marko));
 	}
-	
+
 	@Test
 	public void newEntryNewChildAndParentFromSet() {
-		// Building family  
+		// Building family
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
 		family.addRelation("Marko", "Stjepan");
-		
-		//Test
+
+		// Test
 		family.addRelation("Robert", "Stjepan");
-		Person Robert = family.personFinder("Robert");
-		Person Stjepan = family.personFinder("Stjepan");
-		Person Marko = family.personFinder("Marko");
-		assertEquals(true, family.returnFamily().contains(Robert));
-		assertEquals(true, Stjepan.getChildren().contains(Robert));
-		assertEquals(true, Stjepan.getChildren().contains(Marko));
+		Person robert = family.personFinder("Robert");
+		Person stjepan = family.personFinder("Stjepan");
+		Person marko = family.personFinder("Marko");
+		assertEquals(true, family.getFamily().contains(robert));
+		assertEquals(true, stjepan.getChildren().contains(robert));
+		assertEquals(true, stjepan.getChildren().contains(marko));
 	}
-	
+
 	@Test
 	public void newEntryChildFromSetAndNewParent() {
-		// Building family  
+		// Building family
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
 		family.addRelation("Marko", "Stjepan");
 		family.addRelation("Robert", "Stjepan");
-		
-		//Test
+
+		// Test
 		family.addRelation("Robert", "Josip");
-		Person Robert = family.personFinder("Robert");
-		Person Josip = family.personFinder("Josip");
-		Person Stjepan = family.personFinder("Stjepan");
-		assertEquals(true, family.returnFamily().contains(Josip));
-		assertEquals(true, Josip.getChildren().contains(Robert));
-		assertEquals(true, Stjepan.getChildren().contains(Robert));
+		Person robert = family.personFinder("Robert");
+		Person josip = family.personFinder("Josip");
+		Person stjepan = family.personFinder("Stjepan");
+		assertEquals(true, family.getFamily().contains(josip));
+		assertEquals(true, josip.getChildren().contains(robert));
+		assertEquals(true, stjepan.getChildren().contains(robert));
 	}
-	
+
 	@Test
 	public void newEntryChildAndParentFromSet() {
-		// Building family  
+		// Building family
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
 		family.addRelation("Marko", "Stjepan");
 		family.addRelation("Robert", "Stjepan");
 		family.addRelation("Robert", "Josip");
-		
-		//Test
+
+		// Test
 		family.addRelation("Stjepan", "Adam");
-		Person Stjepan = family.personFinder("Stjepan");
-		Person Adam = family.personFinder("Adam");
-		assertEquals(true, Adam.getChildren().contains(Stjepan));
+		Person stjepan = family.personFinder("Stjepan");
+		Person adam = family.personFinder("Adam");
+		assertEquals(true, adam.getChildren().contains(stjepan));
 	}
-	
-	@Test	//(expected=RelationNotAllowedException.class)
+
+	@Test (expected=RelationNotAllowedException.class)
 	public void newEntryCyclicRelation() {
-		// Building family  
+		// Building family
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
 		family.addRelation("Marko", "Stjepan");
 		family.addRelation("Robert", "Stjepan");
 		family.addRelation("Stjepan", "Adam");
-	
-		//Test
+
+		// Test
 		family.addRelation("Adam", "Robert");
-		Person Adam = family.personFinder("Adam");
-		Person Robert = family.personFinder("Robert");
-		assertEquals(false, Robert.getChildren().contains(Adam));
 	}
-	
-	@Test	//(expected=RelationNotAllowedException.class)
+
+	@Test (expected=RelationNotAllowedException.class)
 	public void newEntryRepeatedRelation() {
-		// Building family  
+		// Building family
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
-	
-		//Test
+
+		// Test
 		family.addRelation("Adam", "Ivan");
-		Person Adam = family.personFinder("Adam");
-		Person Ivan = family.personFinder("Ivan");
-		assertEquals(2, family.returnFamily().size());
-		assertEquals(true, Ivan.getChildren().contains(Adam));
-		assertEquals(1, Ivan.getChildren().size());
 	}
-	
-	@Test	//(expected=RelationNotAllowedException.class)
+
+	@Test (expected=RelationNotAllowedException.class)
 	public void newEntrySameName() {
-		// Building family  
+		// Building family
 		FamilyEditor family = new FamilyEditor();
 		family.addRelation("Adam", "Ivan");
-	
-		//Test
+
+		// Test
 		family.addRelation("Adam", "Adam");
-		Person Adam = family.personFinder("Adam");
-		Person Ivan = family.personFinder("Ivan");
-		assertEquals(2, family.returnFamily().size());
-		assertEquals(true, Ivan.getChildren().contains(Adam));
-		assertEquals(1, Ivan.getChildren().size());
-		assertEquals(0, Adam.getChildren().size());
 	}
 
 }
