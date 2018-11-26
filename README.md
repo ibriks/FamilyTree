@@ -4,32 +4,32 @@ Application takes a file containing children and their parents names and outputs
 
 ## Example of input and output
 ### Content of input file:
-> Adam Ivan
-> Marko Stjepan
-> Stjepan Adam
-> Robert Stjepan
-> Fran Ivan
-> Leopold Luka
-> Leopold Ivan
-> Teodor Leopold
-> Stjepan Josip
+Adam Ivan <br />
+Marko Stjepan <br />
+Stjepan Adam <br />
+Robert Stjepan <br />
+Fran Ivan <br />
+Leopold Luka <br />
+Leopold Ivan <br />
+Teodor Leopold <br />
+Stjepan Josip <br />
 
 ### Expected utput:
-> Ivan
->     Adam
->         Stjepan
->             Marko
->             Robert
->     Fran
->     Leopold
->         Teodor
-> Luka
->     Leopold
->         Teodor
-> Josip
->     Stjepan
->         Marko
->         Robert
+Ivan <br />
+    Adam <br />
+        Stjepan <br />
+            Marko <br />
+            Robert <br />
+    Fran <br />
+    Leopold <br />
+        Teodor <br />
+Luka <br />
+    Leopold <br />
+        Teodor <br />
+Josip <br />
+    Stjepan <br />
+        Marko <br />
+        Robert <br />
 
 ## Running and testing the application
 Application takes a file path as an argument from command line and outputs a result.
