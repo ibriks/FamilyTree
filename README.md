@@ -1,5 +1,5 @@
 # FamilyTree
-A Java project that uses Maven as a build tool.  
+A Java project that uses Maven as a build tool. (jdk 1.8, maven 3.6.0)
 Application takes a file containing children's and their parents' names and outputs a family tree.
 
 ## Behaviour and look
