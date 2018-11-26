@@ -3,7 +3,7 @@ A Java project that uses Maven as a build tool.
 Application takes a file containing children's and their parents' names and outputs a family tree.
 
 ## Behaviour and look
-First entry of child and parent.
+### First entry of child and parent.
 <pre>
 Adam Ivan
 </pre>
@@ -11,7 +11,7 @@ Adam Ivan
 Ivan
     Adam
 </pre>
-New entry, child not in family, parent not in family.
+### New entry, child not in family, parent not in family.
 <pre>
 Marko Stjepan
 </pre>
@@ -21,7 +21,7 @@ Ivan
 Stjepan
     Marko
 </pre>
-New entry, child not in family, parent in family.
+### New entry, child not in family, parent in family.
 <pre>
 Robert Stjepan
 </pre>
@@ -32,7 +32,7 @@ Stjepan
     Marko
     Robert
 </pre>
-New entry, child in family, parent not in family.
+### New entry, child in family, parent not in family.
 <pre>
 Robert Josip
 </pre>
@@ -45,7 +45,7 @@ Stjepan
     Marko
     Robert
 </pre>
-New entry, child in family, parent in family, with no rules broken.
+### New entry, child in family, parent in family, with no rules broken.
 <pre>
 Stjepan Adam
 </pre>
@@ -58,10 +58,10 @@ Ivan
 Josip
     Robert
 </pre>
-New entry, child in family, parent in family, with breaking the rules. <br/>
-"Adam Ivan" repeats a relation. <br/>
-"Adam Adam" creates a loop within person. <br/>
-"Adam Robert" creates a cyclic relation. <br/>
+### New entry, child in family, parent in family, with breaking the rules.
+"Adam Ivan" repeats a relation.  
+"Adam Adam" creates a loop within person.  
+"Adam Robert" creates a cyclic relation.  
 For each forbidden entry a RelationNotAllowedException is thrown with message about a specific problem. Application continues to run without adding forbidden relation to the family.
 <pre>
 Adam Ivan
