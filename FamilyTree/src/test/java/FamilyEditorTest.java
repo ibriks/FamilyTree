@@ -130,7 +130,7 @@ public class FamilyEditorTest {
 		assertEquals(1, Ivan.getChildren().size());
 	}
 	
-	@Test
+	@Test	//(expected=RelationNotAllowedException.class)
 	public void newEntrySameName() {
 		// Building family  
 		FamilyEditor family = new FamilyEditor();
