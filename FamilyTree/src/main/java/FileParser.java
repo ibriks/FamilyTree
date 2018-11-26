@@ -18,13 +18,13 @@ public class FileParser {
 		while (inFile.hasNext()) {
 			String childName = inFile.next();
 			String parentName = inFile.next();
-			
+
 			try {
 				family.addRelation(childName, parentName);
 			} catch (RelationNotAllowedException e) {
 				System.err.println(e);
 			}
-		
+
 		}
 
 		inFile.close();

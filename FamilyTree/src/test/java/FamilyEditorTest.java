@@ -99,7 +99,7 @@ public class FamilyEditorTest {
 		assertEquals(true, adam.getChildren().contains(stjepan));
 	}
 
-	@Test (expected=RelationNotAllowedException.class)
+	@Test(expected = RelationNotAllowedException.class)
 	public void newEntryCyclicRelation() {
 		// Building family
 		FamilyEditor family = new FamilyEditor();
@@ -112,7 +112,7 @@ public class FamilyEditorTest {
 		family.addRelation("Adam", "Robert");
 	}
 
-	@Test (expected=RelationNotAllowedException.class)
+	@Test(expected = RelationNotAllowedException.class)
 	public void newEntryRepeatedRelation() {
 		// Building family
 		FamilyEditor family = new FamilyEditor();
@@ -122,7 +122,7 @@ public class FamilyEditorTest {
 		family.addRelation("Adam", "Ivan");
 	}
 
-	@Test (expected=RelationNotAllowedException.class)
+	@Test(expected = RelationNotAllowedException.class)
 	public void newEntrySameName() {
 		// Building family
 		FamilyEditor family = new FamilyEditor();

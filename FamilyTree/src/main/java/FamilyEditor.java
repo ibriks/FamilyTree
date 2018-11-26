@@ -40,16 +40,16 @@ public class FamilyEditor {
 			parent.addChild(child);
 		} else {
 			if (parent.getChildren().contains(child)) {
-				throw new RelationNotAllowedException(String.format(
-						"Msg: %s is already a child of %s!", child.getName(), parent.getName()));
+				throw new RelationNotAllowedException(
+						String.format("Msg: %s is already a child of %s!", child.getName(), parent.getName()));
 			}
 			if (parent.isThisPersonMyAncestor(child)) {
 				throw new RelationNotAllowedException(String.format(
 						"Msg: Trying to make cyclic relation with %s and %s!", child.getName(), parent.getName()));
 			}
 			if (parent.equals(child)) {
-				throw new RelationNotAllowedException(String.format(
-						"Msg: %s cannot be its parent or child!", parent.getName()));
+				throw new RelationNotAllowedException(
+						String.format("Msg: %s cannot be its parent or child!", parent.getName()));
 			}
 		}
 	}
