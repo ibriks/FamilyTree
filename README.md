@@ -11,9 +11,8 @@ Adam Ivan
 Ivan
     Adam
 </pre>
-New entry of new child and new parent:
+New entry, child not in family, parent not in family:
 <pre>
-Adam Ivan
 Marko Stjepan
 </pre>
 <pre>
@@ -22,10 +21,8 @@ Ivan
 Stjepan
     Marko
 </pre>
-New entry of new child and parent that is already in family:
+New entry, child not in family, parent in family:
 <pre>
-Adam Ivan
-Marko Stjepan
 Robert Stjepan
 </pre>
 <pre>
@@ -33,15 +30,34 @@ Ivan
     Adam
 Stjepan
     Marko
+    Robert
 </pre>
-
-family.addRelation("Adam", "Ivan");
-		family.addRelation("Marko", "Stjepan");
-		family.addRelation("Robert", "Stjepan");
-		family.addRelation("Stjepan", "Adam");
-	
-		//Test
-		family.addRelation("Adam", "Robert");
+New entry, child in family, parent not in family:
+<pre>
+Robert Josip
+</pre>
+<pre>
+Ivan
+    Adam
+Stjepan
+    Marko
+    Robert
+Josip
+    Robert
+</pre>
+New entry, child in family, parent in family:
+<pre>
+Stjepan Adam
+</pre>
+<pre>
+Ivan
+    Adam
+        Stjepan
+            Marko
+            Robert
+Josip
+    Robert
+</pre>
 
 ## Example of input and output
 ### Content of input file:
