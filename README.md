@@ -59,9 +59,9 @@ Josip
     Robert
 </pre>
 New entry, child in family, parent in family, with breaking the rules. <br/>
-Adam Ivan repeats a relation. <br/>
-Adam Adam creates a loop within person. <br/>
-Adam Robert creates a cyclic relation. <br/>
+"Adam Ivan" repeats a relation. <br/>
+"Adam Adam" creates a loop within person. <br/>
+"Adam Robert" creates a cyclic relation. <br/>
 For each forbidden entry a RelationNotAllowedException is thrown with message about a specific problem. Application continues to run without adding forbidden relation to the family.
 <pre>
 Adam Ivan
