@@ -39,10 +39,10 @@ Robert Josip
 <pre>
 Ivan
     Adam
+Josip
+    Robert
 Stjepan
     Marko
-    Robert
-Josip
     Robert
 </pre>
 New entry, child in family, parent in family:
