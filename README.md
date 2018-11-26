@@ -1,6 +1,6 @@
 # FamilyTree
 A Java project that uses Maven as a build tool. 
-Application takes a file containing children and their parents names and outputs a family tree.
+Application takes a file containing children's and their parents' names and outputs a family tree.
 
 ## Behaviour and look
 First entry of child and parent.
